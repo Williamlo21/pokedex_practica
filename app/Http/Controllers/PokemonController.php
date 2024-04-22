@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pokemon;
 use App\Http\Requests\StorePokemonRequest;
 use App\Http\Requests\UpdatePokemonRequest;
+use App\Models\Habilidades;
 
 class PokemonController extends Controller
 {
@@ -21,7 +22,8 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        return view('pokemon.create');
+        $habilidades = Habilidades::all();
+        return view('pokemon.create', compact('habilidades'));
     }
 
     /**

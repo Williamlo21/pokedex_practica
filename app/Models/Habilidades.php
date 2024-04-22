@@ -14,4 +14,8 @@ class Habilidades extends Model
         'descripcion',
 
     ];
+
+    public function pokemons(){
+        return $this->hasMany(Pokemon::class, 'habilidades_pokemon');
+    }
 }

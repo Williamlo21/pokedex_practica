@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pokemon extends Model
+class Habilidades extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nombre',
-        'tipo',
-        'altura',
-        'peso',
-        'habilidades',
+        'habilidad',
+        'descripcion',
+
     ];
-    
 }

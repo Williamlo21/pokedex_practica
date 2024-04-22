@@ -1,7 +1,9 @@
-@include('layouts.header')
+@extends('app')
 <!-- Contenido principal -->
-<div class="container flex-grow-1 mt-5">
-    @yield('content')
+    @section('content')
 
-</div>
-@include('layouts.footer')
+
+
+    @include('pokemon.cardPokemon')
+@endsection
+

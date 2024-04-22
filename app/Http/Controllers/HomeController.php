@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pokemon;
-use App\Http\Requests\StorePokemonRequest;
-use App\Http\Requests\UpdatePokemonRequest;
+use Illuminate\Http\Request;
 
-class PokemonController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pokemon.index');
+        return view('welcome');
     }
 
     /**
@@ -21,13 +19,13 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        return view('pokemon.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePokemonRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +33,7 @@ class PokemonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pokemon $pokemon)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +41,7 @@ class PokemonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pokemon $pokemon)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +49,7 @@ class PokemonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePokemonRequest $request, Pokemon $pokemon)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +57,7 @@ class PokemonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pokemon $pokemon)
+    public function destroy(string $id)
     {
         //
     }

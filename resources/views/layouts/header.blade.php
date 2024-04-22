@@ -35,10 +35,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio</a>
+                    <a class="nav-link" href="{{ route('home.index') }}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Acerca de</a>
+                    <a class="nav-link" href="{{ route('pokemon.create') }}">Crear Pokemon</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Servicios</a>

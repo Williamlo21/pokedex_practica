@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pokemon;
-use App\Http\Requests\StorePokemonRequest;
-use App\Http\Requests\UpdatePokemonRequest;
+use App\Models\Habilidades;
+use App\Http\Requests\StoreHabilidadesRequest;
+use App\Http\Requests\UpdateHabilidadesRequest;
 
-class PokemonController extends Controller
+class HabilidadesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pokemon.index');
+        //
     }
 
     /**
@@ -21,13 +21,13 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        return view('pokemon.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePokemonRequest $request)
+    public function store(StoreHabilidadesRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class PokemonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pokemon $pokemon)
+    public function show(Habilidades $habilidades)
     {
         //
     }
@@ -43,7 +43,7 @@ class PokemonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pokemon $pokemon)
+    public function edit(Habilidades $habilidades)
     {
         //
     }
@@ -51,7 +51,7 @@ class PokemonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePokemonRequest $request, Pokemon $pokemon)
+    public function update(UpdateHabilidadesRequest $request, Habilidades $habilidades)
     {
         //
     }
@@ -59,7 +59,7 @@ class PokemonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pokemon $pokemon)
+    public function destroy(Habilidades $habilidades)
     {
         //
     }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Habilidades extends Model
+class Habilidad extends Model
 {
     use HasFactory;
 
@@ -16,6 +16,6 @@ class Habilidades extends Model
     ];
 
     public function pokemons(){
-        return $this->hasMany(Pokemon::class, 'habilidades_pokemon');
+        return $this->belongsToMany(Pokemon::class, 'habilidads_pokemons');
     }
 }

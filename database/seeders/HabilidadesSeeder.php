@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Habilidades;
+use App\Models\Habilidad;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +13,8 @@ class HabilidadesSeeder extends Seeder
      */
     public function run(): void
     {
-        Habilidades::create(['habilidad' => 'NADAR', 'descripcion' => 'Permite al pokemon nadar']);
-        Habilidades::create(['habilidad' => 'CORRER', 'descripcion' => 'Permite al pokemon correr']);
-        Habilidades::create(['habilidad' => 'VOLAR', 'descripcion' => 'Permite al pokemon volar']);
+        Habilidad::create(['habilidad' => 'NADAR', 'descripcion' => 'Permite al pokemon nadar']);
+        Habilidad::create(['habilidad' => 'CORRER', 'descripcion' => 'Permite al pokemon correr']);
+        Habilidad::create(['habilidad' => 'VOLAR', 'descripcion' => 'Permite al pokemon volar']);
     }
 }

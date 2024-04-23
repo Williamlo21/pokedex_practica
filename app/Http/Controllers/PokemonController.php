@@ -40,7 +40,7 @@ class PokemonController extends Controller
             'altura' => 'required|numeric',
             'peso' => 'required|numeric',
             'habilidades' => 'required',
-            'foto_pokemon' => 'required|image|max:2048',
+            // 'foto_pokemon' => 'required|image|max:2048',
         ]);
         // @dd($request->habilidades);
         try{

@@ -34,13 +34,16 @@ class PokemonController extends Controller
      */
     public function store(StorePokemonRequest $request)
     {
+        $fotoPokemon = $request->foto_pokemon;
+        // $nombreImagen = time() . '_' . $fotoPokemon->getClientOriginalName();
+        @dd($fotoPokemon);
         $data = $request->validate([
             'nombre' => 'string|required',
             'tipo' => 'required',
             'altura' => 'required|numeric',
             'peso' => 'required|numeric',
             'habilidades' => 'required',
-            // 'foto_pokemon' => 'required|image|max:2048',
+            'foto_pokemon' => 'required|mimes:jpeg,png,jpg,gif|image|max:2048',
         ]);
         // @dd($request->habilidades);
         try{

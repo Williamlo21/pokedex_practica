@@ -4,8 +4,8 @@
     <h4>Crear Pokemon</h4>
     <form action="{{ route('pokemon.store') }}" method="post">
         @csrf
-        {{-- <label for="foto_pokemon">Foto pokemon</label>
-        <input type="file" name="foto_pokemon" class="form-control" id=""> --}}
+        <label for="foto_pokemon">Foto pokemon</label>
+        <input type="file" name="foto_pokemon" class="form-control" id="">
 
         <label for="nombre">Nombre:</label>
         <input type="text" class="form-control @error('nombre') is-invalid @enderror " name="nombre" value="{{ old('nombre') }}">

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pokemon;
 use App\Http\Requests\StorePokemonRequest;
 use App\Http\Requests\UpdatePokemonRequest;
+use App\Models\Habilidad;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class PokemonController extends Controller
 {
@@ -13,7 +16,8 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        return view('pokemon.index');
+        $pokemons = Pokemon::all();
+        return view('pokemon.index', compact('pokemons'));
     }
 
     /**
@@ -21,7 +25,8 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        //
+        $habilidades = Habilidad::all();
+        return view('pokemon.create', compact('habilidades'));
     }
 
     /**
@@ -29,7 +34,41 @@ class PokemonController extends Controller
      */
     public function store(StorePokemonRequest $request)
     {
-        //
+        $fotoPokemon = $request->foto_pokemon;
+        // $nombreImagen = time() . '_' . $fotoPokemon->getClientOriginalName();
+        @dd($fotoPokemon);
+        $data = $request->validate([
+            'nombre' => 'string|required',
+            'tipo' => 'required',
+            'altura' => 'required|numeric',
+            'peso' => 'required|numeric',
+            'habilidades' => 'required',
+            'foto_pokemon' => 'required|mimes:jpeg,png,jpg,gif|image|max:2048',
+        ]);
+        // @dd($request->habilidades);
+        try{
+            DB::beginTransaction();
+
+
+            $pokemon = Pokemon::create([
+                'nombre' => $data['nombre'],
+                'tipo' => $data['tipo'],
+                'altura' => $data['altura'],
+                'peso' => $data['peso'],
+            ]);
+
+            // Asociar habilidades al Pokémon
+            $pokemon->habilidades()->attach($data['habilidades']);
+
+            DB::commit();
+            return redirect()->route('pokemon.index')->with('success', 'pokemon registrado con éxito');
+        }catch(QueryException $e){
+            DB::rollBack();
+            @dd($e->getMessage());
+            return redirect()->back()->withInput()->with('Error al crear el pokemon');
+        }
+
+
     }
 
     /**

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pokemon', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('tipo');
-            $table->float('altura');
-            $table->float('peso');
-            $table->timestamps();
+        Schema::table('pokemon', function (Blueprint $table) {
+            $table->string('ruta_imagen')->after('peso')->nullable();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pokemon');
+        Schema::table('pokemon', function (Blueprint $table) {
+            //
+        });
     }
 };

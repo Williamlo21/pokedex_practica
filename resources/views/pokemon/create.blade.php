@@ -2,7 +2,7 @@
 <!-- Contenido principal -->
 @section('content')
     <h4>Crear Pokemon</h4>
-    <form action="{{ route('pokemon.store') }}" method="post">
+    <form action="{{ route('pokemon.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="foto_pokemon">Foto pokemon</label>
         <input type="file" name="foto_pokemon" class="form-control" id="">

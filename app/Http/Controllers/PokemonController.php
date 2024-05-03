@@ -34,16 +34,14 @@ class PokemonController extends Controller
      */
     public function store(StorePokemonRequest $request)
     {
-        $fotoPokemon = $request->foto_pokemon;
-        // $nombreImagen = time() . '_' . $fotoPokemon->getClientOriginalName();
-        @dd($fotoPokemon);
         $data = $request->validate([
             'nombre' => 'string|required',
             'tipo' => 'required',
             'altura' => 'required|numeric',
             'peso' => 'required|numeric',
             'habilidades' => 'required',
-            'foto_pokemon' => 'required|mimes:jpeg,png,jpg,gif|image|max:2048',
+            'foto_pokemon' => 'required',
+            // 'foto_pokemon' => 'required|mimes:jpeg,png,jpg,gif|image|max:2048',
         ]);
         // @dd($request->habilidades);
         try{
@@ -59,6 +57,16 @@ class PokemonController extends Controller
 
             // Asociar habilidades al Pokémon
             $pokemon->habilidades()->attach($data['habilidades']);
+
+            // Guardar la foto del Pokémon
+            if ($request->hasFile('foto_pokemon')) {
+                $fotoPokemon = $request->file('foto_pokemon');
+                // @dd($fotoPokemon);
+                $nombrePokemon = $pokemon->id . '.' . $fotoPokemon->getClientOriginalExtension();
+                $rutaPokemon = $fotoPokemon->storeAs('public/images/pokemon', $nombrePokemon);
+                $pokemon->ruta_imagen = 'images/pokemon/' . $nombrePokemon;
+                $pokemon->save();
+            }
 
             DB::commit();
             return redirect()->route('pokemon.index')->with('success', 'pokemon registrado con éxito');

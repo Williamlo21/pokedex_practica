@@ -1,7 +1,10 @@
 @forelse ($pokemons as $pokemon)
 <div class="col">
     <div class="card" style="width: 15rem;">
-        <img src="{{ asset('images/pokemon/sin_desbloquear.png') }}" class="card-img-top" alt="...">
+        {{-- {{ $pokemon->ruta_imagen }} --}}
+        <img src="{{ asset('storage/' . $pokemon->ruta_imagen) }}" class="card-img-top                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               " alt="...">
+
+
         <div class="card-body">
             <h5 class="card-title">{{ $pokemon->nombre }}</h5>
             <p class="card-text"><strong>Tipo: </strong> {{ $pokemon->tipo }}</p>
